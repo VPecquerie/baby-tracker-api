@@ -11,6 +11,8 @@ doctrine:
         entity_managers:
             default:
                 mappings:
+                    SonataUserBundle: ~
+                    FOSUserBundle: ~
                     App:
                         is_bundle: false
                         type: annotation

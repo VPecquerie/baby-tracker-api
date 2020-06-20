@@ -14,15 +14,9 @@
         {% endblock %}
     </title>
 
-    {% block stylesheets %}{% endblock %}
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/jumbotron/">
-
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
   </head>
 
   <body>
@@ -75,6 +69,8 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+    {{ encore_entry_link_tags('app') }}
+    {% endblock %}
   </body>
 </html>

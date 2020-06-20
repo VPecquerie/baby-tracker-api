@@ -9,6 +9,7 @@
         "sensio/framework-extra-bundle": "^5.5",
         "sonata-project/admin-bundle": "^3.69",
         "sonata-project/doctrine-orm-admin-bundle": "^3.18",
+        "sonata-project/google-authenticator": "^2.2",
         "sonata-project/user-bundle": "^4.5",
         "symfony/console": "4.4.*",
         "symfony/dotenv": "4.4.*",

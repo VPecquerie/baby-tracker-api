@@ -1,0 +1,2 @@
+sonata_user:
+    manager_type: orm

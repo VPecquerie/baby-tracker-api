@@ -4,6 +4,11 @@ fos_user:
     user_class: App\Entity\User
     group: 
       group_class: App\Entity\Group
+      group_manager: sonata.user.orm.group_manager
+
+    service:
+        user_manager: sonata.user.orm.user_manager
+
     from_email:
         address: "no-reply@vincent-p.fr"
         sender_name: "no-reply@vincent-p.fr"

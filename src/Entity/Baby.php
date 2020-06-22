@@ -4,55 +4,156 @@ namespace App\Entity;
 
 use App\Repository\BabyRepository;
 use Doctrine\ORM\Mapping as ORM;
+use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=BabyRepository::class)
+ * @ORM\Table(name="babies")
  */
 class Baby
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    protected $id;
+  /**
+   * @ORM\Id()
+   * @ORM\GeneratedValue()
+   * @ORM\Column(type="integer")
+   */
+  protected $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    protected $firstname;
+  /**
+   * @ORM\Column(type="string", length=255)
+   */
+  protected $firstname;
 
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    protected $birthDate;
+  /**
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  protected $lastname;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+  /**
+   * @ORM\Column(type="date", nullable=true)
+   */
+  protected $birthDate;
 
-    public function getFirstname(): ?string
-    {
-        return $this->firstname;
-    }
+  /**
+   * @ORM\ManyToMany(targetEntity=User::class, mappedBy="babies")
+   */
+  protected $parents;
 
-    public function setFirstname(string $firstname): self
-    {
-        $this->firstname = $firstname;
+  /**
+   * @ORM\ManyToOne(targetEntity=Feed::class, inversedBy="baby")
+   */
+  protected $feeds;
 
-        return $this;
-    }
+  /**
+   * @ORM\ManyToOne(targetEntity=Sleep::class, inversedBy="baby")
+   */
+  protected $sleeps;
 
-    public function getBirthDate(): ?\DateTimeInterface
-    {
-        return $this->birthDate;
-    }
+  public function __construct()
+  {
+    $this->parents = new ArrayCollection();
+  }
 
-    public function setBirthDate(?\DateTimeInterface $birthDate): self
-    {
-        $this->birthDate = $birthDate;
+  /**
+   * @return mixed
+   */
+  public function getId()
+  {
+    return $this->id;
+  }
 
-        return $this;
-    }
+  /**
+   * @param mixed $id
+   */
+  public function setId($id): void
+  {
+    $this->id = $id;
+  }
+
+  /**
+   * @return mixed
+   */
+  public function getFirstname()
+  {
+    return $this->firstname;
+  }
+
+  /**
+   * @param mixed $firstname
+   */
+  public function setFirstname($firstname): void
+  {
+    $this->firstname = $firstname;
+  }
+
+  /**
+   * @return mixed
+   */
+  public function getBirthDate()
+  {
+    return $this->birthDate;
+  }
+
+  /**
+   * @param mixed $birthDate
+   */
+  public function setBirthDate($birthDate): void
+  {
+    $this->birthDate = $birthDate;
+  }
+
+  /**
+   * @return Collection
+   */
+  public function getParents(): Collection
+  {
+    return $this->parents;
+  }
+
+  /**
+   * @param Collection $parents
+   */
+  public function setParents(Collection $parents): void
+  {
+    $this->parents = $parents;
+  }
+
+  /**
+   * @return mixed
+   */
+  public function getFeeds()
+  {
+    return $this->feeds;
+  }
+
+  /**
+   * @param mixed $feeds
+   */
+  public function setFeeds($feeds): void
+  {
+    $this->feeds = $feeds;
+  }
+
+  /**
+   * @return mixed
+   */
+  public function getSleeps()
+  {
+    return $this->sleeps;
+  }
+
+  /**
+   * @param mixed $sleeps
+   */
+  public function setSleeps($sleeps): void
+  {
+    $this->sleeps = $sleeps;
+  }
+
+  public function __toString()
+  {
+    return $this->firstname;
+  }
+
+
 }

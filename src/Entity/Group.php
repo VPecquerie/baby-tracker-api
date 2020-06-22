@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="fos_group")
+ * @ORM\Table(name="fos_groups")
  */
 class Group extends BaseGroup
 {
@@ -21,4 +21,6 @@ class Group extends BaseGroup
     {
         parent::__construct();
     }
+
+
 }

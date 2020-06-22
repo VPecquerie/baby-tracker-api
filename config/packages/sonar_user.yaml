@@ -3,3 +3,8 @@ sonata_user:
     class:
         user: App\Entity\User
         group: App\Entity\Group
+    admin:
+      user:
+        class: App\Admin\UserAdmin
+        controller:     SonataAdminBundle:CRUD
+        translation:    SonataUserBundle

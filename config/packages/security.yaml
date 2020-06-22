@@ -41,9 +41,11 @@ security:
                 use_forward:    false
                 check_path:     /login_check
                 failure_path:   null
+                default_target_path: dashboard
 
             logout:                
                 target: /
+
             anonymous:    true
             switch_user:  { role: ROLE_ADMIN }
             oauth:

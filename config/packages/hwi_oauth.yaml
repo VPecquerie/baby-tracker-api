@@ -5,9 +5,9 @@ hwi_oauth:
     fosub:
         username_iterations: 30
         properties:
-            facebook: facebookId
-            google: googleId
-            twitter: twitterId
+            facebook: facebookUid
+            google: gplusUid
+            twitter: twitterUid
 
     # list of names of the firewalls in which this bundle is active, this setting MUST be set
     firewall_names: [main]

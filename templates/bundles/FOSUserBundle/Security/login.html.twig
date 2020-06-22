@@ -1,0 +1,14 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+
+  <div class="row">
+    <div class="col m-3"> 
+      {{ include('@FOSUser/Security/login_content.html.twig') }}
+    </div>
+    <div class="col m-3">
+      {{ include('@HWIOAuth/Connect/login.html.twig') }}
+    </div>
+  </div>
+
+{% endblock fos_user_content %}

@@ -1,0 +1,36 @@
+{% extends '@HWIOAuth/layout.html.twig' %}
+
+{% block hwi_oauth_content %}
+
+  <div class="row justify-content-md-center m-3">
+    <div class="col-4">
+      <div class="card">
+        {% if userInformation.profilePicture is defined and userInformation.profilePicture is not empty %}
+            <img alt="image" class="card-img-top" src="{{ userInformation.profilePicture }}" />
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ 'header.connecting' | trans({}, 'HWIOAuthBundle')}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ userInformation.realName }}</h6>
+          <p class="card-text">
+            {{ 'connect.confirm.text' | trans({'%service%': service | trans({}, 'HWIOAuthBundle'), '%name%': userInformation.realName}, 'HWIOAuthBundle') }}
+          </p>
+        
+          {{ form_start(form, {'action': path('hwi_oauth_connect_service', {'service': service, 'key': key}), 'attr': {'class': 'fos_user_registration_register'}}) }}
+          {{ form_widget(form) }}
+          <div class="row">
+            <a href="{{ path('hwi_oauth_connect') }}" class="col m-2 btn btn-danger">
+              {{ 'connect.confirm.cancel' | trans({}, 'HWIOAuthBundle') }}
+            </a>
+            <button type="submit" class="col m-2 btn btn-primary">
+              {{ 'connect.confirm.submit' | trans({}, 'HWIOAuthBundle') }}
+            </button>
+
+          </div>
+          {{ form_end(form) }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock hwi_oauth_content %}

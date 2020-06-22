@@ -7,3 +7,4 @@ twig:
     globals:
         APPLICATION_NAME: 'Baby Tracker'
         VERSION: '0.0.1'
+        APPLICATION_DESCRIPTION: 'Baby Track est une application permettant de suivre l''évolution des repas et sommeil de votre bébé.'

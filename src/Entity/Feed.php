@@ -52,50 +52,50 @@ class Feed
 
   public function getStart(): ?\DateTimeInterface
   {
-      return $this->start;
+    return $this->start;
   }
 
   public function setStart(\DateTimeInterface $start): self
   {
-      $this->start = $start;
+    $this->start = $start;
 
-      return $this;
+    return $this;
   }
 
   public function getFinish(): ?\DateTimeInterface
   {
-      return $this->finish;
+    return $this->finish;
   }
 
   public function setFinish(\DateTimeInterface $finish): self
   {
-      $this->finish = $finish;
+    $this->finish = $finish;
 
-      return $this;
+    return $this;
   }
 
   public function getQuantity(): ?int
   {
-      return $this->quantity;
+    return $this->quantity;
   }
 
   public function setQuantity(int $quantity): self
   {
-      $this->quantity = $quantity;
+    $this->quantity = $quantity;
 
-      return $this;
+    return $this;
   }
 
   public function getComments(): ?string
   {
-      return $this->comments;
+    return $this->comments;
   }
 
   public function setComments(?string $comments): self
   {
-      $this->comments = $comments;
+    $this->comments = $comments;
 
-      return $this;
+    return $this;
   }
 
   /**
@@ -114,5 +114,8 @@ class Feed
     $this->baby = $baby;
   }
 
-
+  public function __toString()
+  {
+    return 'Repas de ' . $this->getBaby()->getFirstname() . ' du ' . $this->start->format('d/m/Y \à H:i:s');
+  }
 }

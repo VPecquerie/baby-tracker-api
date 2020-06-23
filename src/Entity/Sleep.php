@@ -11,75 +11,75 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Sleep
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+  /**
+   * @ORM\Id()
+   * @ORM\GeneratedValue()
+   * @ORM\Column(type="integer")
+   */
+  private $id;
 
-    /**
-     * Many sleeps have one baby. This is the owning side.
-     * @ORM\ManyToOne(targetEntity=Baby::class, inversedBy="feeds")
-     * @ORM\JoinColumn(name="baby_id", referencedColumnName="id")
-     */
-    protected $baby;
+  /**
+   * Many sleeps have one baby. This is the owning side.
+   * @ORM\ManyToOne(targetEntity=Baby::class, inversedBy="feeds")
+   * @ORM\JoinColumn(name="baby_id", referencedColumnName="id")
+   */
+  protected $baby;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $start;
+  /**
+   * @ORM\Column(type="datetime")
+   */
+  private $start;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $finish;
+  /**
+   * @ORM\Column(type="datetime")
+   */
+  private $finish;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $comments;
-    
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+  /**
+   * @ORM\Column(type="text", nullable=true)
+   */
+  private $comments;
 
-    public function getStart(): ?\DateTimeInterface
-    {
-        return $this->start;
-    }
+  public function getId(): ?int
+  {
+    return $this->id;
+  }
 
-    public function setStart(\DateTimeInterface $start): self
-    {
-        $this->start = $start;
+  public function getStart(): ?\DateTimeInterface
+  {
+    return $this->start;
+  }
 
-        return $this;
-    }
+  public function setStart(\DateTimeInterface $start): self
+  {
+    $this->start = $start;
 
-    public function getFinish(): ?\DateTimeInterface
-    {
-        return $this->finish;
-    }
+    return $this;
+  }
 
-    public function setFinish(\DateTimeInterface $finish): self
-    {
-        $this->finish = $finish;
+  public function getFinish(): ?\DateTimeInterface
+  {
+    return $this->finish;
+  }
 
-        return $this;
-    }
+  public function setFinish(\DateTimeInterface $finish): self
+  {
+    $this->finish = $finish;
 
-    public function getComments(): ?string
-    {
-        return $this->comments;
-    }
+    return $this;
+  }
 
-    public function setComments(string $comments): self
-    {
-        $this->comments = $comments;
+  public function getComments(): ?string
+  {
+    return $this->comments;
+  }
 
-        return $this;
-    }
+  public function setComments(string $comments): self
+  {
+    $this->comments = $comments;
+
+    return $this;
+  }
 
   /**
    * @return mixed
@@ -97,5 +97,8 @@ class Sleep
     $this->baby = $baby;
   }
 
-
+  public function __toString()
+  {
+    return 'Sommeil de ' . $this->getBaby()->getFirstname() . ' du ' . $this->start->format('d/m/Y \à H:i:s');
+  }
 }

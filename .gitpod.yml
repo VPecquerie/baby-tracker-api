@@ -6,13 +6,13 @@ ports:
     onOpen: open-preview
 tasks:
   - init: >
-      cp .env.dist .env
-      composer update
-      yarn install 
-      php bin/console doctrine:database:create 
-      php bin/console doctrine:migrations:migrate -q
-      php bin/console fos:user:generate
-      php bin/console fos:user:create admin --super-admin admin@localhost admin
+      cp .env.dist .env &&
+      composer update &&
+      yarn install &&
+      php bin/console doctrine:database:create &&
+      php bin/console doctrine:migrations:migrate -q &&
+      php bin/console fos:user:generate &&
+      php bin/console fos:user:create admin --super-admin admin@localhost admin &&
       yarn run dev
     command: >
       php bin/console server:run 0.0.0.0:8000

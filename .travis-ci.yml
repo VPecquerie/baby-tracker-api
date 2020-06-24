@@ -1,0 +1,20 @@
+language: php
+php:
+  - 7.3
+  - 7.4
+  - nightly
+
+sudo: false
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+        - $HOME/symfony-bridge/.phpunit
+
+install:
+    - composer install --prefer-dist --no-interaction
+    - php bin/console doctrine:database:create --env=test
+    - php bin/console doctrine:schema:update --force --env=test
+    - php bin/console doctrine:fixtures:load -n --env=test
+
+script:
+    - ./vendor/bin/simple-phpunit --coverage-text --colors

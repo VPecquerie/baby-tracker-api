@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Baby;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ResetType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +15,9 @@ class BabyType extends AbstractType
   {
     $builder
       ->add('firstname')
-      ->add('birthDate');
+      ->add('birthDate')
+      ->add('cancel', ResetType::class)
+      ->add('save', SubmitType::class);
   }
 
   public function configureOptions(OptionsResolver $resolver)

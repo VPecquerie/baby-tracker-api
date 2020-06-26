@@ -1,5 +1,6 @@
 language: php
-sudo: false
+os: linux
+dist: bionic
 cache:
   directories:
     - $HOME/.composer/cache/files
@@ -8,7 +9,7 @@ cache:
     - node_modules
     - vendor
 
-matrix:
+jobs:
   fast_finish: true
   include:
     - php: 7.3

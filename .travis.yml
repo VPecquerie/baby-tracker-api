@@ -1,9 +1,4 @@
 language: php
-php:
-  - 7.3
-  - 7.4
-  - nightly
-
 sudo: false
 cache:
   directories:
@@ -11,19 +6,36 @@ cache:
     - $HOME/symfony-bridge/.phpunit
     - $HOME/.npm
     - node_modules
+    - vendor
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.3
+    - php: 7.2
+    - php: nightly
+
+  allow_failures:
+    - php: nighlty
 
 before_install:
   - nvm install --lts
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
 
-install:
+before_script:
   - composer install --prefer-dist --no-interaction
-  - npm install && npm run dev
+  - npm install
+  - composer install --prefer-dist --no-interaction
+  - npm run dev
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:update --force --env=test
   - php bin/console doctrine:fixtures:load -n --env=test
+  - ./cc-test-reporter before-build
 
 script:
   - ./vendor/bin/simple-phpunit --coverage-text --colors
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
-allow_failures:
-  - php: nightly
+

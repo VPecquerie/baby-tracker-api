@@ -9,9 +9,15 @@ cache:
   directories:
     - $HOME/.composer/cache/files
     - $HOME/symfony-bridge/.phpunit
+    - $HOME/.npm
+    - node_modules
+
+before_install:
+  - nvm install --lts
 
 install:
   - composer install --prefer-dist --no-interaction
+  - npm install && npm run dev
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:update --force --env=test
   - php bin/console doctrine:fixtures:load -n --env=test

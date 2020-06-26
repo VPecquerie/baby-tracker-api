@@ -1,0 +1,31 @@
+---
+version: "2"
+plugins:
+  phpcodesniffer:
+    enabled: true
+    config:
+      file_extensions: "php,inc,lib"
+  phpmd:
+    enabled: true
+    config:
+      file_extensions:
+        - php
+        - inc
+      checks:
+        Naming/ShortVariable:
+          enabled: false
+  sonar-php:
+    enabled: true
+    config:
+      minimum_severity: critical
+
+exclude_patterns:
+  - .git/**
+  - bin/**
+  - config/**
+  - migrations/**
+  - node_modules/**
+  - public/**
+  - tests/**
+  - var/**
+  - vendor/**

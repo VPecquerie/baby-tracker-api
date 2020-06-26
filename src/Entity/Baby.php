@@ -119,6 +119,10 @@ class Baby
     $this->parents = $parents;
   }
 
+  public function addParent(User $user) {
+    $this->parents->add($user);
+  }
+
   /**
    * @return mixed
    */
